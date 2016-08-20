@@ -24,7 +24,7 @@ public class MenuItem : MonoBehaviour
 
         GameObject refObj = GameObject.Find("Coordinator");//まずオブジェクトを見つける
         Coordinate coord = refObj.GetComponent<Coordinate>();//そのオブジェクトにアタッチされているスクリプトファイル名を指定して参照する
-        coord.sortNamePlate(menuText);
+        coord.menuClicked(menuText);
         
     }
 

@@ -40,7 +40,21 @@ public class NamePlate : MonoBehaviour {
 
         if (clickTime < 0.1f)
         {
-            //ここにクリックされたときの処理を書く
+            //「自分」選択中のときは選んだものが自分かどうか確認する
+            if (Coordinate.userSelectingNow  == true)
+            {
+                Coordinate.selectedNamePlate = gameObject.transform.parent;
+                Coordinate.canvasUserSelected.SetActive(true);
+                return;
+            }
+
+            //それ以外のときは表示中のアイテムの詳細表示
+            TextMesh desc = gameObject.transform.parent.transform.FindChild("txtDesc").GetComponent<TextMesh>();
+            TextMesh descDetail = gameObject.transform.parent.transform.FindChild("txtDescDetail").GetComponent<TextMesh>();
+            if (descDetail.text!="")
+            {
+                coord.displayDescription(desc.text, descDetail.text);
+            }
         }
     }
 }
