@@ -332,6 +332,7 @@ public class Coordinate : MonoBehaviour
         //Prepare name plates
         GameObject objBG = GameObject.Find("BackGround");
 
+
         userSelected = false;
 
 
@@ -437,10 +438,10 @@ public class Coordinate : MonoBehaviour
                 //顔画像があるときは表示する
                 if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
                 {
-                    if (Contacts.ContactsList[i + contactOffsetByPersonThisWeek].PhotoTexture != null)
+                    if (Contacts.ContactsList[i - contactOffsetByPersonThisWeek].PhotoTexture != null)
                     {
                         GUITexture faceTexture = GameObject.Find("userFace").GetComponent<GUITexture>();
-                        faceTexture.texture = Contacts.ContactsList[i + contactOffsetByPersonThisWeek].PhotoTexture;
+                        faceTexture.texture = Contacts.ContactsList[i - contactOffsetByPersonThisWeek].PhotoTexture;
                     }
                 }
 
@@ -773,9 +774,9 @@ public class Coordinate : MonoBehaviour
     {
         int i = 0;
         //ダウンロードした内容が勝手にキャッシュされるので、URLの末尾にタイムスタンプを追加してキャッシュされないようにしている
-        //for (myWWW = new WWW("http://nb-united.info/birthday/birthday.txt?t=" + DateTime.Now.ToString("yyyyMMddHHmmss")) ; myWWW.isDone == false;)
-        for (myWWW = new WWW("http://192.168.100.3/persontoday.txt?t=" + DateTime.Now.ToString("yyyyMMddHHmmss")); myWWW.isDone == false;)
+        for (myWWW = new WWW("http://nb-united.info/birthday/birthday-utf8.txt?t=" + DateTime.Now.ToString("yyyyMMddHHmmss")) ; myWWW.isDone == false;)
         {/*WWWの読み込みが終わるまで空ループ*/ i++; }
+        //for (myWWW = new WWW("http://192.168.100.3/persontoday.txt?t=" + DateTime.Now.ToString("yyyyMMddHHmmss")); myWWW.isDone == false;)
 
     }
 
